@@ -49,7 +49,7 @@ Please confirm my booking. Thank you!`;
     const encodedMessage = encodeURIComponent(message);
     
     // WhatsApp number (replace with actual owner's number)
-    const whatsappNumber = '919785125935'; // Shankar Lal Saini's number
+    const whatsappNumber = '919829123456'; // Shankar Lal Saini's number
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
     // Open WhatsApp
@@ -80,71 +80,3 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
         showSection(sectionId);
     });
 });
-function showCarDetails(car) {
-
-    const title = document.getElementById("carTitle");
-    const image = document.getElementById("carImage");
-    const info = document.getElementById("carInfo");
-    const popup = document.getElementById("carPopup");
-
-    if(car === "dzire"){
-        title.innerText = "Swift Dzire";
-        image.src = "dzire.jpg";
-        info.innerText = "Seats: 4 + Driver | AC Car | Best for city travel | Price: ₹11/km";
-    }
-
-    if(car === "ertiga"){
-        title.innerText = "Maruti Ertiga";
-        image.src = "ertiga.jpg";
-        info.innerText = "Seats: 6 + Driver | AC Car | Best for family trip | Price: ₹14/km";
-    }
-
-    popup.style.display = "block";
-}
-
-function closePopup(){
-    document.getElementById("carPopup").style.display = "none";
-}
-function showCarDetails(car){
-
-let title=document.getElementById("carTitle")
-let image=document.getElementById("carImage")
-let info=document.getElementById("carInfo")
-
-if(car==="dzire"){
-title.innerText="Swift Dzire"
-image.src="dzire.jpg"
-info.innerText="5 Seater Sedan Taxi. Best for city travel."
-}
-
-if(car==="ertiga"){
-title.innerText="Maruti Ertiga"
-image.src="ertiga.jpg"
-info.innerText="7 Seater family car. Comfortable for long trips."
-}
-
-if(car==="innova"){
-title.innerText="Toyota Innova"
-image.src="innova.jpg"
-info.innerText="Luxury 7 seater taxi."
-}
-
-if(car==="scorpio"){
-title.innerText="Mahindra Scorpio"
-image.src="scorpio.jpg"
-info.innerText="Powerful SUV for tours."
-}
-
-if(car==="tempo"){
-title.innerText="Tempo Traveller"
-image.src="tempo.jpg"
-info.innerText="12 Seater traveller for group tours."
-}
-
-document.getElementById("carPopup").style.display="block"
-
-}
-
-function closePopup(){
-document.getElementById("carPopup").style.display="none"
-}
