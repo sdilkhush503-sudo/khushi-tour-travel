@@ -80,3 +80,28 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
         showSection(sectionId);
     });
 });
+function showCarDetails(car) {
+
+    const title = document.getElementById("carTitle");
+    const image = document.getElementById("carImage");
+    const info = document.getElementById("carInfo");
+    const popup = document.getElementById("carPopup");
+
+    if(car === "dzire"){
+        title.innerText = "Swift Dzire";
+        image.src = "dzire.jpg";
+        info.innerText = "Seats: 4 + Driver | AC Car | Best for city travel | Price: ₹11/km";
+    }
+
+    if(car === "ertiga"){
+        title.innerText = "Maruti Ertiga";
+        image.src = "ertiga.jpg";
+        info.innerText = "Seats: 6 + Driver | AC Car | Best for family trip | Price: ₹14/km";
+    }
+
+    popup.style.display = "block";
+}
+
+function closePopup(){
+    document.getElementById("carPopup").style.display = "none";
+}
