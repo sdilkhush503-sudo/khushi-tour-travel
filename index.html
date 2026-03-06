@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khushi Tour and Travel - Taxi Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">🚕 Khushi Tour and Travel</div>
+            <ul class="nav-menu">
+                <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                <li><a href="#booking" onclick="showSection('booking')">Book Taxi</a></li>
+                <li><a href="#services" onclick="showSection('services')">Services</a></li>
+                <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Khushi Tour and Travel</h1>
+                <p class="owner-name">Owner: Shankar Lal Saini</p>
+                <p class="tagline">Fast, Safe & Reliable Taxi Services in Rajasthan</p>
+                <button class="cta-button" onclick="showSection('booking')">Book Your Ride Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Taxi Section -->
+    <section id="booking" class="section">
+        <div class="booking-container">
+            <h2>Book Your Taxi</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pickup">Pickup Location *</label>
+                    <input type="text" id="pickup" name="pickup" placeholder="e.g., Jaipur, Delhi, Agra" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="drop">Drop Location *</label>
+                    <input type="text" id="drop" name="drop" placeholder="e.g., Jaipur, Delhi, Agra" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Travel Date *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cartype">Car Type *</label>
+                    <select id="cartype" name="cartype" required>
+                        <option value="">Select Car Type</option>
+                        <option value="economy">Economy (Sedan)</option>
+                        <option value="premium">Premium (SUV)</option>
+                        <option value="tempo">Tempo Traveller (8-12 Seater)</option>
+                    </select>
+                </div>
+
+                <button type="button" class="whatsapp-button" onclick="sendToWhatsApp()">
+                    📱 Book on WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="services-container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚕</div>
+                    <h3>Jaipur to Delhi</h3>
+                    <p>Fast and comfortable journey to Delhi from Jaipur. Distance: 240 km</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚕</div>
+                    <h3>Jaipur to Agra</h3>
+                    <p>Visit the Taj Mahal. Comfortable ride to Agra. Distance: 240 km</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚕</div>
+                    <h3>Jaipur to Ajmer</h3>
+                    <p>Pilgrimage and leisure trips to Ajmer Sharif. Distance: 135 km</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✈️</div>
+                    <h3>Airport Pickup & Drop</h3>
+                    <p>24×7 Airport services. Professional drivers. On-time guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>📞 Phone</h3>
+                    <p><a href="tel:+919785125935">+91 978-512-593-5</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>💬 WhatsApp</h3>
+                    <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%20and%20Travel" target="_blank" class="whatsapp-link">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>📍 Address</h3>
+                    <p>Jaipur, Rajasthan<br>India</p>
+                </div>
+            </div>
+
+            <div class="contact-buttons">
+                <a href="tel:+919785125935" class="call-button">☎️ Call Now</a>
+                <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%20and%20Travel" target="_blank" class="whatsapp-button">💬 WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Khushi Tour and Travel. All rights reserved. | Owner: Shankar Lal Saini</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
