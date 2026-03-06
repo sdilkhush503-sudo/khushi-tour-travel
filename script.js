@@ -35,7 +35,7 @@ function sendToWhatsApp() {
     }
 
     // Create WhatsApp message
-    const message = `Hello Khushi Tour and Travel! 👋\n\n
+    const message = `Hello Khushi Tour and Travel! Shankar Lal ji  👋\n\n
 📋 *Booking Details:*\n
 👤 Name: ${name}\n
 📱 Phone: ${phone}\n
@@ -49,7 +49,7 @@ Please confirm my booking. Thank you!`;
     const encodedMessage = encodeURIComponent(message);
     
     // WhatsApp number (replace with actual owner's number)
-    const whatsappNumber = '919829123456'; // Shankar Lal Saini's number
+   const whatsappNumber = '919785125935'; // Shankar Lal Saini's number
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
     // Open WhatsApp
