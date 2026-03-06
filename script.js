@@ -9,24 +9,29 @@ behavior:"smooth"
 
 let pricePerKm = 12;
 
-function calculateFare(){
+function calculateFare() {
 
-let pickup = document.getElementById("pickup").value;
-let drop = document.getElementById("drop").value;
+let car = document.getElementById("cartype").value;
 
-if(pickup=="" || drop==""){
+let distance = 280; // Example Jaipur to Delhi distance
 
-alert("Enter pickup and drop");
+let rate = 0;
 
-return;
-
+if (car === "sedan") {
+rate = 12;
 }
 
-let distance = 200;
+else if (car === "ertiga") {
+rate = 15;
+}
 
-let fare = distance * pricePerKm;
+else if (car === "crysta") {
+rate = 18;
+}
 
-document.getElementById("fare").innerText="Estimated Fare ₹"+fare;
+let fare = distance * rate;
+
+document.getElementById("fare").innerText = "Estimated Fare ₹ " + fare;
 
 }
 
