@@ -105,3 +105,46 @@ function showCarDetails(car) {
 function closePopup(){
     document.getElementById("carPopup").style.display = "none";
 }
+function showCarDetails(car){
+
+let title=document.getElementById("carTitle")
+let image=document.getElementById("carImage")
+let info=document.getElementById("carInfo")
+
+if(car==="dzire"){
+title.innerText="Swift Dzire"
+image.src="dzire.jpg"
+info.innerText="5 Seater Sedan Taxi. Best for city travel."
+}
+
+if(car==="ertiga"){
+title.innerText="Maruti Ertiga"
+image.src="ertiga.jpg"
+info.innerText="7 Seater family car. Comfortable for long trips."
+}
+
+if(car==="innova"){
+title.innerText="Toyota Innova"
+image.src="innova.jpg"
+info.innerText="Luxury 7 seater taxi."
+}
+
+if(car==="scorpio"){
+title.innerText="Mahindra Scorpio"
+image.src="scorpio.jpg"
+info.innerText="Powerful SUV for tours."
+}
+
+if(car==="tempo"){
+title.innerText="Tempo Traveller"
+image.src="tempo.jpg"
+info.innerText="12 Seater traveller for group tours."
+}
+
+document.getElementById("carPopup").style.display="block"
+
+}
+
+function closePopup(){
+document.getElementById("carPopup").style.display="none"
+}
