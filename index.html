@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Khushi Tour and Travel</title>
+<title>Khushi Tour & Travel</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,165 +13,94 @@
 
 <body>
 
-<!-- NAVBAR -->
+<header>
+
+<div class="logo">🚖 Khushi Tour & Travel</div>
 
 <nav>
 
-<div class="logo">
-
-Khushi Tour & Travel
-
-</div>
-
 <ul>
 
-<li onclick="showSection('home')">Home</li>
+<li><a href="#">Home</a></li>
 
-<li onclick="showSection('booking')">Book Taxi</li>
+<li class="dropdown">
 
-<li onclick="showSection('services')">Services</li>
+<a href="#">Services ▾</a>
 
-<li onclick="showSection('contact')">Contact</li>
+<ul class="dropdown-menu">
+
+<li>Jaipur to Delhi</li>
+<li>Jaipur to Agra</li>
+<li>Airport Pickup</li>
+<li>Outstation Taxi</li>
+
+</ul>
+
+</li>
+
+<li><a href="#booking">Book Taxi</a></li>
+
+<li><a href="#contact">Contact</a></li>
 
 </ul>
 
 </nav>
 
+</header>
 
+<section class="hero">
 
-<!-- HOME -->
-
-<section id="home" class="section active">
-
-<div class="hero">
-
-<h1>Khushi Tour & Travel</h1>
+<h1>Fast & Reliable Taxi Service</h1>
 
 <p>Owner: Shankar Lal Saini</p>
 
-<p>Fast Safe Reliable Taxi Service</p>
-
-<button onclick="showSection('booking')">
-
-Book Your Taxi Now
-
-</button>
-
-</div>
+<button onclick="scrollBooking()">Book Your Taxi</button>
 
 </section>
 
-
-
-<!-- BOOKING -->
-
-<section id="booking" class="section">
-
-<div class="booking-box">
+<section id="booking" class="booking">
 
 <h2>Taxi Booking</h2>
 
-<input id="name" placeholder="Full Name">
+<div class="form">
+
+<input id="name" placeholder="Your Name">
 
 <input id="phone" placeholder="Phone Number">
 
+<input id="pickup" placeholder="Pickup City">
 
+<input id="drop" placeholder="Drop City">
 
-<label>Pickup</label>
-
-<input list="cities" id="pickup">
-
-<label>Drop</label>
-
-<input list="cities" id="drop">
-
-
-
-<datalist id="cities">
-
-<option value="Jaipur">
-
-<option value="Delhi">
-
-<option value="Agra">
-
-<option value="Jodhpur">
-
-<option value="Ajmer">
-
-<option value="Udaipur">
-
-<option value="Bikaner">
-
-<option value="Kota">
-
-<option value="Jaisalmer">
-
-<option value="Pushkar">
-
-<option value="Mathura">
-
-<option value="Vrindavan">
-
-</datalist>
-
-
-
-<input type="date" id="date">
-
-
+<input id="date" type="date">
 
 <select id="cartype">
 
-<option value="10">Sedan</option>
-
-<option value="14">SUV</option>
-
-<option value="18">Innova</option>
-
-<option value="25">Tempo Traveller</option>
+<option>Sedan</option>
+<option>SUV</option>
+<option>Innova</option>
 
 </select>
 
-
-
-<button onclick="calculateFare()">
-
-Calculate Fare
-
-</button>
-
-
-
-<h3 id="fare"></h3>
-
-
-
-<button class="whatsapp" onclick="sendWhatsApp()">
-
-Book on WhatsApp
-
-</button>
-
-
+<button onclick="calculateFare()">Calculate Fare</button>
 
 </div>
 
+<h3 id="fare">Estimated Fare ₹0</h3>
+
+<button class="whatsapp" onclick="sendWhatsApp()">Book on WhatsApp</button>
+
 </section>
 
-
-
-<!-- SERVICES -->
-
-<section id="services" class="section">
+<section class="services">
 
 <h2>Our Services</h2>
 
 <div class="cards">
 
-<div class="card">Jaipur to Delhi</div>
+<div class="card">Jaipur → Delhi</div>
 
-<div class="card">Jaipur to Agra</div>
+<div class="card">Jaipur → Agra</div>
 
 <div class="card">Airport Pickup</div>
 
@@ -183,24 +110,17 @@ Book on WhatsApp
 
 </section>
 
-
-
-<!-- CONTACT -->
-
-<section id="contact" class="section">
+<section id="contact">
 
 <h2>Contact</h2>
 
-<p>Phone: +91 9785125935</p>
+<p>📞 9772740065</p>
 
-<p>Address: Jaipur Rajasthan</p>
+<p>📍 Jodhpur Rajasthan</p>
 
 </section>
-
-
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
