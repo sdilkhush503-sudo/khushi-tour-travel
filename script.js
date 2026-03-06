@@ -1,75 +1,55 @@
-function showSection(id){
 
-document.querySelectorAll(".section")
+function scrollBooking(){
 
-.forEach(sec=>sec.classList.remove("active"))
-
-document.getElementById(id).classList.add("active")
+document.getElementById("booking").scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
-
+let pricePerKm = 12;
 
 function calculateFare(){
 
-let pickup=document.getElementById("pickup").value
+let pickup = document.getElementById("pickup").value;
+let drop = document.getElementById("drop").value;
 
-let drop=document.getElementById("drop").value
+if(pickup=="" || drop==""){
 
-let rate=document.getElementById("cartype").value
+alert("Enter pickup and drop");
 
-
-
-let distance=200
-
-
-
-let fare=distance*rate
-
-
-
-document.getElementById("fare").innerHTML=
-
-"Estimated Fare ₹ "+fare
+return;
 
 }
 
+let distance = 200;
 
+let fare = distance * pricePerKm;
+
+document.getElementById("fare").innerText="Estimated Fare ₹"+fare;
+
+}
 
 function sendWhatsApp(){
 
-let name=document.getElementById("name").value
-
-let phone=document.getElementById("phone").value
-
-let pickup=document.getElementById("pickup").value
-
-let drop=document.getElementById("drop").value
-
-let date=document.getElementById("date").value
-
-
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let pickup=document.getElementById("pickup").value;
+let drop=document.getElementById("drop").value;
+let date=document.getElementById("date").value;
+let car=document.getElementById("cartype").value;
 
 let msg=`Taxi Booking
 
-Name:${name}
+Name: ${name}
+Phone: ${phone}
+Pickup: ${pickup}
+Drop: ${drop}
+Date: ${date}
+Car: ${car}`;
 
-Phone:${phone}
+let url=`https://wa.me/919772740065?text=${encodeURIComponent(msg)}`;
 
-Pickup:${pickup}
-
-Drop:${drop}
-
-Date:${date}`
-
-
-
-window.open(
-
-"https://wa.me/919785125935?text="+
-
-encodeURIComponent(msg)
-
-)
+window.open(url,"_blank");
 
 }
