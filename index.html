@@ -51,8 +51,8 @@
                     <label for="pickup">Pickup Location:</label>
 
 <input list="cities" id="pickup" name="pickup" placeholder="Search or select city">
-<select id="cities">
-    <option value="">pickup Location</option>
+
+<datalist id="cities">
 <option value="Jaipur">
 <option value="Delhi">
 <option value="Agra">
@@ -103,14 +103,13 @@
 <option value="Hisar">
 <option value="Kurukshetra">
 <option value="Chandigarh">
-</select>
-
+</datalist>
                 <div class="form-group">
-                   <label for="drop">Drop Location:</label>
+                  <label for="drop">Drop Location:</label>
 
 <input list="dropCities" id="drop" name="drop" placeholder="Search or select drop city">
 
-<select id="dropCities">
+<datalist id="dropCities">
 <option value="Jaipur">
 <option value="Delhi">
 <option value="Agra">
@@ -161,7 +160,7 @@
 <option value="Hisar">
 <option value="Kurukshetra">
 <option value="Chandigarh">
-</select>
+</datalist>
 
                 <div class="form-group">
                     <label for="date">Travel Date *</label>
