@@ -48,40 +48,55 @@
                 </div>
 
                 <div class="form-group">
-                   <label for="pickup">Pickup Location:</label>
-        <select id="pickup" name="pickup">
-            <option value="Jaipur">Jaipur</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Agra">Agra</option>
-            <option value="Jodhpur">Jodhpur</option>
-            <option value="Ajmer">Ajmer</option>
-            <option value="Khatu Shyam">Khatu Shyam</option>
-            <option value="Mathura">Mathura</option>
-            <option value="Vrindavan">Vrindavan</option>
-            <option value="Udaipur">Udaipur</option>
-            <option value="Bikaner">Bikaner</option>
-            <option value="Pushkar">Pushkar</option>
-            <option value="Sikar">Sikar</option>
-            <option value="Alwar">Alwar</option>
-            <option value="Bhilwara">Bhilwara</option>
-            <option value="Kota">Kota</option>
-            <option value="Bundi">Bundi</option>
-            <option value="Shekhawati">Shekhawati</option>
-            <option value="Churu">Churu</option>
-            <option value="Dungarpur">Dungarpur</option>
-            <option value="Banswara">Banswara</option>
-            <option value="Pali">Pali</option>
-            <option value="Sumerpur">Sumerpur</option>
-            <option value="Nathdwara">Nathdwara</option>
-            <option value="Mount Abu">Mount Abu</option>
-            <option value="Barmer">Barmer</option>
-            <option value="Jaisalmer">Jaisalmer</option>
-            <option value="Mohangarh">Mohangarh</option>
-            <option value="Khimsar">Khimsar</option>
-            <option value="Gajner">Gajner</option>
-            <option value="Fatehpur">Fatehpur</option>
-            <option value="Neem ka Thana">Neem ka Thana</option>
-        </select><br><br>
+                    <label for="pickup">Pickup Location:</label><br>
+
+<!-- Search Bar -->
+<input type="text" id="citySearch" placeholder="Search city..." onkeyup="filterCities()" style="width:200px; padding:5px;"><br><br>
+
+<!-- Dropdown List -->
+<select id="pickup" name="pickup" size="6" style="width:200px;">
+    <option value="Jaipur">Jaipur</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Agra">Agra</option>
+    <option value="Gurgaon">Gurgaon</option>
+    <option value="Faridabad">Faridabad</option>
+    <option value="Noida">Noida</option>
+    <option value="Ghaziabad">Ghaziabad</option>
+    <option value="Jodhpur">Jodhpur</option>
+    <option value="Ajmer">Ajmer</option>
+    <option value="Khatu Shyam">Khatu Shyam</option>
+    <option value="Mathura">Mathura</option>
+    <option value="Vrindavan">Vrindavan</option>
+    <option value="Udaipur">Udaipur</option>
+    <option value="Bikaner">Bikaner</option>
+    <option value="Pushkar">Pushkar</option>
+    <option value="Sikar">Sikar</option>
+    <option value="Alwar">Alwar</option>
+    <option value="Bhilwara">Bhilwara</option>
+    <option value="Kota">Kota</option>
+    <option value="Bundi">Bundi</option>
+    <option value="Churu">Churu</option>
+    <option value="Pali">Pali</option>
+    <option value="Mount Abu">Mount Abu</option>
+    <option value="Barmer">Barmer</option>
+    <option value="Jaisalmer">Jaisalmer</option>
+    <option value="Panipat">Panipat</option>
+    <option value="Sonipat">Sonipat</option>
+</select>
+
+<script>
+function filterCities() {
+    let input = document.getElementById("citySearch");
+    let filter = input.value.toLowerCase();
+    let select = document.getElementById("pickup");
+    let options = select.getElementsByTagName("option");
+
+    for (let i = 0; i < options.length; i++) {
+        let txt = options[i].textContent || options[i].innerText;
+        options[i].style.display = txt.toLowerCase().includes(filter) ? "" : "none";
+    }
+}
+</script>
 
                 <div class="form-group">
                     <label for="drop">Drop Location *</label>
