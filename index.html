@@ -400,8 +400,26 @@
         crysta: { ratePerKm: 18, tollTax: 300, boardTax: 0.20 }
     };
 
+    // Scroll to Booking Section
     function scrollBooking(){
         document.getElementById("booking").scrollIntoView({ behavior:"smooth" });
     }
 
-    function calculateFare
+    // Calculate Fare
+    function calculateFare() {
+        let car = document.getElementById("cartype").value;
+        let distance = document.getElementById("distance").value;
+        
+        if (!distance || isNaN(distance) || distance <= 0) {
+            alert("Please enter valid distance in km");
+            return;
+        }
+        
+        let config = fareConfig[car];
+        let baseFare = distance * config.ratePerKm;
+        let tollTax = config.tollTax;
+        let boardTax = 0;
+        let totalFare = baseFare + tollTax + boardTax;
+        
+        let fareBreakdown = `
+            <div class="fare-breakdown">
