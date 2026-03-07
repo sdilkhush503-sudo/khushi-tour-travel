@@ -11,20 +11,20 @@ const fareConfig = {
     sedan: {
         ratePerKm: 12,
         minFare: 500,
-        tollTax: 200,  // Fixed toll tax
-        boardTax: 0.20  // 20% extra for night (10 PM - 6 AM)
+        tollTax: 200-1000,  // Fixed toll tax
+        
     },
     ertiga: {
         ratePerKm: 15,
         minFare: 700,
-        tollTax: 250,
-        boardTax: 0.20
+        tollTax: 250-1000,
+       
     },
     crysta: {
         ratePerKm: 18,
         minFare: 900,
-        tollTax: 300,
-        boardTax: 0.20
+        tollTax: 300-1000,
+       
     }
 };
 
@@ -34,22 +34,13 @@ function calculateFare() {
     let distance = document.getElementById("distance").value;
     let travelDate = document.getElementById("date").value;
     
-    // Get current time for board tax
-    let currentTime = new Date();
-    let hour = currentTime.getHours();
-    let isNightTime = (hour >= 22 || hour < 6); // 10 PM to 6 AM
-    
-    // Validate inputs
-    if (!distance || isNaN(distance) || distance <= 0) {
-        alert("Please enter valid distance in km");
-        return;
-    }
+}
     
     let config = fareConfig[car];
     let baseFare = distance * config.ratePerKm;
     let tollTax = config.tollTax;
-    let boardTax = isNightTime ? baseFare * config.boardTax : 0;
-    let totalFare = baseFare + tollTax + boardTax;
+   
+    let totalFare = baseFare + tollTax;
     
     // Apply minimum fare
     if (totalFare < config.minFare) {
@@ -63,7 +54,6 @@ function calculateFare() {
             <p>📏 Distance: ${distance} km</p>
             <p>💰 Base Fare: ₹${Math.round(baseFare)}</p>
             <p>🛣️ Toll Tax: ₹${tollTax}</p>
-            <p>🌙 Board Tax: ${isNightTime ? '₹' + Math.round(boardTax) + ' (Night Charges)' : '₹0'}</p>
             <hr>
             <p><strong>🎯 Total Fare: ₹${Math.round(totalFare)}</strong></p>
         </div>
@@ -94,7 +84,7 @@ function sendWhatsApp() {
     let baseFare = distance * config.ratePerKm;
     let tollTax = config.tollTax;
     let boardTax = 0;
-    let totalFare = baseFare + tollTax + boardTax;
+    let totalFare = baseFare + tollTax ;
     
     let msg = `🚖 *Taxi Booking Request*%0A%0A` +
               `👤 *Name:* ${name}%0A` +
@@ -106,7 +96,6 @@ function sendWhatsApp() {
               `📏 *Distance:* ${distance} km%0A` +
               `💰 *Base Fare:* ₹${Math.round(baseFare)}%0A` +
               `🛣️ *Toll Tax:* ₹${tollTax}%0A` +
-              `🌙 *Board Tax:* ₹${boardTax}%0A` +
               `🎯 *Total Fare:* ₹${Math.round(totalFare)}%0A%0A` +
               `*Please confirm booking!*`;
     
