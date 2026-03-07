@@ -97,21 +97,42 @@
         }
         
         /* Hero */
-        .hero{
-            height:500px;
-            background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                        url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhcnxlbnwwfHwwfHx8MA%3D%3D');
-            background-size:cover;
-            background-position:center;
-            background-attachment:fixed;
-            color:white;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            padding:50px 20px;
-        }
+     <section class="hero">
+  <div class="hero-text">
+    <h1>Welcome to Khushi Tour and Travel</h1>
+    <p>
+      Your trusted partner for safe and comfortable taxi services across India.
+      24×7 Pickup & Drop Service for Jaipur, Delhi, Ajmer and many more.
+    </p>
+    <h3>Owner: Shankar Lal Saini</h3>
+  </div>
+</section>
+
+<style>
+.hero{
+  height: 400px;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=500&auto=format&fit=crop&q=60');
+  
+  background-size: cover;
+  background-position: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+.hero-text h1{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.hero-text p{
+  font-size:18px;
+  max-width:700px;
+}
+</style>
         
         .hero h1{
             font-size:56px;
