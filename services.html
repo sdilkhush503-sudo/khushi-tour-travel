@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Khushi Tour & Travel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">🚖 Khushi Tour & Travel</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="booking.html">Book Taxi</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="services-page">
+    <h1>Our Services</h1>
+    <p>Choose your route and book your taxi</p>
+    
+    <div class="services-grid">
+        <div class="service-card" onclick="setRoute('Jaipur', 'Delhi')">
+            <h3>Jaipur → Delhi</h3>
+            <p>Distance: 280 km | Approx. 4-5 hours</p>
+            <p class="price">₹3,360 - ₹5,040</p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+        
+        <div class="service-card" onclick="setRoute('Jaipur', 'Agra')">
+            <h3>Jaipur → Agra</h3>
+            <p>Distance: 240 km | Approx. 3-4 hours</p>
+            <p class="price">₹2,880 - ₹4,320</p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+        
+        <div class="service-card" onclick="setRoute('Jaipur', 'Udaipur')">
+            <h3>Jaipur → Udaipur</h3>
+            <p>Distance: 400 km | Approx. 6-7 hours</p>
+            <p class="price">₹4,800 - ₹7,200</p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+        
+        <div class="service-card" onclick="setRoute('Jaipur', 'Jodhpur')">
+            <h3>Jaipur → Jodhpur</h3>
+            <p>Distance: 330 km | Approx. 5-6 hours</p>
+            <p class="price">₹3,960 - ₹5,940</p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+        
+        <div class="service-card" onclick="setRoute('Jaipur', 'Pushkar')">
+            <h3>Jaipur → Pushkar</h3>
+            <p>Distance: 150 km | Approx. 2-3 hours</p>
+            <p class="price">₹1,800 - ₹2,700</p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+        
+        <div class="service-card" onclick="setRoute('Jaipur', 'Bharatpur')">
+            <h3>Jaipur → Bharatpur</h3>
+            <p>Distance: 180 km | Approx. 3 hours</p>
+            <p class="price">₹2,160 - ₹3,240</p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+        
+        <div class="service-card" onclick="setRoute('Jaipur', 'Ajmer')">
+            <h3>Jaipur → Ajmer</h3>
+            <p>Distance: 135 km | Approx. 2 hours</p>
+            <p class="price">₹1,620 - ₹2,430</p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+        
+        <div class="service-card" onclick="setRoute('Jaipur', 'Airport')">
+            <h3>Airport Pickup</h3>
+            <p>Jaipur Airport Pickup & Drop</p>
+            <p class="price">₹500 - ₹1,500</p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2024 Khushi Tour & Travel | Owner: Shankar Lal Saini</p>
+    <p>📞 9785125935 | 📍 7 Anand Vihar, Saypura, Sanganer, Jaipur, Raj 302029</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
