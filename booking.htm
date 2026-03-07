@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Booking - Khushi Tour & Travel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">🚖 Khushi Tour & Travel</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="booking.html" class="active">Book Taxi</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="booking-page">
+    <h1>Taxi Booking</h1>
+    <p>Fill the form below to book your taxi</p>
+    
+    <div class="booking-form">
+        <form id="taxiForm">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Pickup Location</label>
+                <input type="text" id="pickup" placeholder="Enter pickup city" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Drop Location</label>
+                <input type="text" id="drop" placeholder="Enter drop city" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Travel Date</label>
+                <input type="date" id="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Car Type</label>
+                <select id="cartype">
+                    <option value="sedan">Sedan (₹12/km)</option>
+                    <option value="ertiga">Ertiga (₹15/km)</option>
+                    <option value="crysta">Innova Crysta (₹18/km)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Distance (km)</label>
+                <input type="number" id="distance" placeholder="Enter distance in km" required>
+            </div>
+            
+            <button type="button" class="btn btn-primary" onclick="calculateFare()">Calculate Fare</button>
+            
+            <h3 id="fare" class="fare-display">Estimated Fare: ₹0</h3>
+            
+            <button type="button" class="btn btn-whatsapp" onclick="sendWhatsApp()">Book on WhatsApp</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>© 2024 Khushi Tour & Travel | Owner: Shankar Lal Saini</p>
+    <p>📞 9785125935 | 📍 7 Anand Vihar, Saypura, Sanganer, Jaipur, Raj 302029</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
