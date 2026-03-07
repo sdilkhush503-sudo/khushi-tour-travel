@@ -3,91 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Booking - Khushi Tour & Travel</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Khushi Tour & Travel</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body{
+            background:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height:100vh;
+            line-height:1.6;
+        }
+        
+        /* Header */
+        header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px 50px;
+            background:linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+            color:white;
+            position:sticky;
+            top:0;
+            z-index:1000;
+            box-shadow:0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .logo{
+            font-size:26px;
+            font-weight:bold;
+            color:#ffcc00;
+            text-shadow:2px 2px 4px rgba(0,0,0,0.5);
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+        
+        nav ul{
+            list-style:none;
+            display:flex;
+            gap:30px;
+        }
+        
+        nav a{
+            color:white;
+            text-decoration:none;
+            font-size:17px;
+            padding:10px 20px;
+            border-radius:25px;
+            transition:all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active{
+            background:linear-gradient(90deg, #ffcc00, #ff9900);
+            color:#1a1a2e;
+            transform:translateY(-2px);
+            box-shadow:0 4px 15px rgba(255,204,0,0.4);
+        }
+        
+        /* Dropdown */
+        .dropdown{
+            position:relative;
+        }
+        
+        .dropdown-menu{
+            display:none;
+            position:absolute;
+            background:white;
+            color:black;
+            padding:10px;
+            border-radius:5px;
+            min-width:180px;
+            box-shadow:0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .dropdown:hover .dropdown-menu{
+            display:block;
+        }
+        
+        .dropdown-menu li{
+            padding:8px 15px;
+            cursor:pointer;
+            list-style:none;
+        }
+        
+        .dropdown-menu li:hover{
+            background:#ffcc00;
+            color:black;
+            border-radius:3px;
+        }
+        
+        /* Hero */
+        .hero{
+            height:500px;
+            background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920');
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+            color:white;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:50px 20px;
+        }
+        
+        .hero h1{
+            font-size:56px;
+            margin-bottom:20px;
+            text-shadow:3px 3px 6px rgba(0,0,0,0.5);
+        }
+        
+        .hero p{
+            font-size:22px;
+            margin-bottom:15px;
+            text-shadow:2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero button{
+            margin-top:20px;
+            padding:15px 35px;
+            background:linear-gradient(90deg, #ffcc00, #ff9900);
+            border:none;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+            border-radius:30px;
+            transition:all 0.3s ease;
+            box-shadow:0 4px 15px rgba(255,204,0,0.4);
+        }
+        
+        .hero button:hover{
+            transform:translateY(-3px);
+            box-shadow:0 6px 20px rgba(255,204,0,0.6);
+        }
+        
+        /* Booking */
+        .booking{
+            padding:80px 50px;
+            text-align:center;
+            background:white;
+        }
+        
+        .booking h2{
+            margin-bottom:30px;
+            color:#1a1a2e;
+            font-size:36px;
+        }
+        
+        .form{
+            display:flex;
+            flex-wrap:wrap;
+            gap:15px;
+            justify-content:center;
+            max-width:800px;
+            margin:0 auto;
+        }
+        
+        .form input,
+        .form select{
+            padding:15px;
+            width:200px;
+            border-radius:10px;
+            border:2px solid #e0e0e0;
+            font-size:16px;
+            transition:all 0.3s ease;
+            background:#fafafa;
+        }
+        
+        .form input:focus,
+        .form select:focus{
+            outline:none;
+            border-color:#ffcc00;
+            background:white;
+            box-shadow:0 0 10px rgba(255,204,0,0.2);
+        }
+        
+        .form button{
+            padding:15px 30px;
+            background:linear-gradient(90deg, #3498db, #2980b9);
+            color:white;
+            border:none;
+            cursor:pointer;
+            border-radius:10px;
+            font-size:16px;
+            font-weight:bold;
+            transition:all 0.3s ease;
+        }
+        
+        .form button:hover{
+            transform:translateY(-2px);
+            box-shadow:0 4px 15px rgba(52,152,219,0.4);
+        }
+        
+        #fare{
+            font-size:24px;
+            color:#1a1a2e;
+            margin:20px 0;
+            background:linear-gradient(135deg, #fff9e6, #fff3cc);
+            padding:20px;
+            border-radius:15px;
+            border-left:6px solid #ffcc00;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .whatsapp{
+            margin-top:20px;
+            padding:15px 35px;
+            background:linear-gradient(90deg, #25D366, #128C7E);
+            color:white;
+            border:none;
+            font-size:18px;
+            font-weight:bold;
+            border-radius:30px;
+            cursor:pointer;
+            transition:all 0.3s ease;
+            box-shadow:0 4px 15px rgba(37,211,102,0.4);
+        }
+        
+        .whatsapp:hover{
+            transform:translateY(-3px);
+            box-shadow:0 6px 20px rgba(37,211,102,0.6);
+        }
+        
+        /* Services */
+        .services{
+            padding:80px 50px;
+            background:white;
+            text-align:center;
+        }
+        
+        .services h2{
+            margin-bottom:30px;
+            color:#1a1a2e;
+            font-size:36px;
+        }
+        
+        .cards{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+        
+        .card{
+            padding:30px;
+            background:linear-gradient(145deg, #ffffff, #f0f0f0);
+            color:white;
+            border-radius:10px;
+            width:200px;
+            transition:0.3s;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+            border:2px solid transparent;
+            cursor:pointer;
+        }
+        
+        .card:hover{
+            transform:translateY(-8px);
+            background:linear-gradient(145deg, #ffcc00, #ff9900);
+            color:black;
+            border-color:#ffcc00;
+            box-shadow:0 20px 50px rgba(255,204,0,0.4);
+        }
+        
+        /* Contact */
+        #contact{
+            padding:40px;
+            text-align:center;
+            background:linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+            color:white;
+        }
+        
+        #contact h2{
+            margin-bottom:20px;
+            font-size:36px;
+        }
+        
+        #contact p{
+            margin:10px 0;
+            font-size:18px;
+        }
+        
+        /* Responsive */
+        @media (max-width:768px){
+            header{
+                flex-direction:column;
+                gap:15px;
+                padding:15px 20px;
+            }
+            
+            nav ul{
+                flex-direction:column;
+                text-align:center;
+                gap:10px;
+            }
+            
+            .hero h1{
+                font-size:32px;
+            }
+            
+            .form{
+                flex-direction:column;
+                align-items:center;
+            }
+            
+            .form input,
+            .form select{
+                width:100%;
+                max-width:300px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
     <div class="logo">🚖 Khushi Tour & Travel</div>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="booking.html" class="active">Book Taxi</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Services ▾</a>
+                <ul class="dropdown-menu">
+                    <li onclick="setRoute('Jaipur', 'Delhi')">Jaipur to Delhi</li>
+                    <li onclick="setRoute('Jaipur', 'Agra')">Jaipur to Agra</li>
+                    <li onclick="setRoute('Jaipur', 'Airport')">Airport Pickup</li>
+                    <li onclick="setRoute('Jaipur', 'Outstation')">Outstation Taxi</li>
+                    <li onclick="setRoute('Jaipur', 'Udaipur')">Jaipur to Udaipur</li>
+                    <li onclick="setRoute('Jaipur', 'Jodhpur')">Jaipur to Jodhpur</li>
+                    <li onclick="setRoute('Jaipur', 'Ajmer')">Jaipur to Ajmer</li>
+                    <li onclick="setRoute('Jaipur', 'Pushkar')">Jaipur to Pushkar</li>
+                </ul>
+            </li>
+            <li><a href="#booking">Book Taxi</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 </header>
 
-<section class="booking-page">
-    <h1>Taxi Booking</h1>
-    <p>Fill the form below to book your taxi</p>
-    
-    <div class="booking-form">
-        <form id="taxiForm">
-            <div class="form-group">
-                <label>Full Name *</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="tel" id="phone" placeholder="Enter your phone number" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Pickup Location *</label>
-                <input type="text" id="pickup" placeholder="Enter pickup city" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Drop Location *</label>
-                <input type="text" id="drop" placeholder="Enter drop city" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Travel Date *</label>
-                <input type="date" id="date" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Car Type *</label>
-                <select id="cartype">
-                    <option value="sedan">Sedan (₹12/km)</option>
-                    <option value="ertiga">Ertiga (₹15/km)</option>
-                    <option value="crysta">Innova Crysta (₹18/km)</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label>Distance (km) *</label>
-                <input type="number" id="distance" placeholder="Enter distance in km" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Additional Charges</label>
-                <p class="info-text">
-                    🛣️ Toll Tax: Fixed amount based on route<br>
-                    
-                </p>
-            </div>
-            
-            <button type="button" class="btn btn-primary" onclick="calculateFare()">Calculate Fare</button>
-            
-            <div id="fare" class="fare-display" style="display:none;"></div>
-            
-            <button type="button" class="btn btn-whatsapp" onclick="sendWhatsApp()">Book on WhatsApp</button>
-        </form>
+<section id="home" class="hero">
+    <h1>Fast & Reliable Taxi Service</h1>
+    <p>Owner: Shankar Lal Saini</p>
+    <p>📍 7 Anand Vihar, Saypura, Sanganer, Jaipur, Raj 302029</p>
+    <p>📞 9785125935</p>
+    <button onclick="scrollBooking()">Book Your Taxi</button>
+</section>
+
+<section id="booking" class="booking">
+    <h2>Taxi Booking</h2>
+    <div class="form">
+        <input id="name" placeholder="Your Name">
+        <input id="phone" placeholder="Phone Number">
+        <input id="pickup" placeholder="Pickup City">
+        <input id="drop" placeholder="Drop City">
+        <input id="date" type="date">
+        <select id="cartype">
+            <option value="sedan">Sedan (₹12/km)</option>
+            <option value="ertiga">Ertiga (₹15/km)</option>
+            <option value="crysta">Innova Crysta (₹18/km)</option>
+        </select>
+        <input id="distance" type="number" placeholder="Distance (km)">
+        <button onclick="calculateFare()">Calculate Fare</button>
+    </div>
+    <h3 id="fare">Estimated Fare ₹0</h3>
+    <button class="whatsapp" onclick="sendWhatsApp()">Book on WhatsApp</button>
+</section>
+
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="cards">
+        <div class="card" onclick="setRoute('Jaipur', 'Delhi')">Jaipur → Delhi</div>
+        <div class="card" onclick="setRoute('Jaipur', 'Agra')">Jaipur → Agra</div>
+        <div class="card" onclick="setRoute('Jaipur', 'Airport')">Airport Pickup</div>
+        <div class="card" onclick="setRoute('Jaipur', 'Outstation')">Outstation Taxi</div>
     </div>
 </section>
 
-<footer>
-    <p>© 2024 Khushi Tour & Travel | Owner: Shankar Lal Saini</p>
-    <p>📞 9785125935 | 📍 7 Anand Vihar, Saypura, Sanganer, Jaipur, Raj 302029</p>
-</footer>
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>📞 <strong>9785125935</strong></p>
+    <p>📍 <strong>7 Anand Vihar, Saypura, Sanganer, Jaipur, Raj 302029</strong></p>
+    <p>👤 Owner: Shankar Lal Saini</p>
+</section>
 
-<script src="script.js"></script>
+<script>
+    // Fare Calculator Configuration
+    const fareConfig = {
+        sedan: { ratePerKm: 12, tollTax: 200, boardTax: 0.20 },
+        ertiga: { ratePerKm: 15, tollTax: 250, boardTax: 0.20 },
+        crysta: { ratePerKm: 18, tollTax: 300, boardTax: 0.20 }
+    };
 
-</body>
-</html>
+    function scrollBooking(){
+        document.getElementById("booking").scrollIntoView({ behavior:"smooth" });
+    }
+
+    function calculateFare
