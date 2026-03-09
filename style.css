@@ -1,1 +1,119 @@
+body{
+margin:0;
+font-family:Arial;
+background:#0a0a0a;
+color:white;
+}
 
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:black;
+}
+
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+}
+
+.call{
+background:yellow;
+border:none;
+padding:10px 15px;
+font-weight:bold;
+}
+
+.hero{
+text-align:center;
+padding:80px 20px;
+background:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70") center/cover;
+}
+
+.booking input{
+padding:10px;
+margin:5px;
+}
+
+.booking button{
+padding:10px 20px;
+background:yellow;
+border:none;
+}
+
+.cars{
+padding:50px;
+text-align:center;
+}
+
+.car-container{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.card{
+background:#111;
+padding:20px;
+width:250px;
+border:1px solid #333;
+}
+
+.card img{
+width:100%;
+}
+
+.card button{
+background:yellow;
+border:none;
+padding:10px;
+margin-top:10px;
+}
+
+.card a{
+display:block;
+margin-top:10px;
+color:lime;
+}
+
+.services{
+padding:50px;
+text-align:center;
+}
+
+.service-box{
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+.service{
+background:#111;
+padding:20px;
+width:200px;
+border:1px solid #333;
+}
+
+.contact{
+text-align:center;
+padding:50px;
+border-top:1px solid #333;
+}
+
+.phone{
+background:yellow;
+padding:10px 20px;
+text-decoration:none;
+color:black;
+margin:10px;
+}
+
+.whatsapp{
+background:green;
+padding:10px 20px;
+text-decoration:none;
+color:white;
+}
