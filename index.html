@@ -1,247 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khushi Tour & Travel</title>
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body{
-            background:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height:100vh;
-            line-height:1.6;
-        }
-        
-        /* Header */
-        header{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:15px 50px;
-            background:linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
-            color:white;
-            position:sticky;
-            top:0;
-            z-index:1000;
-            box-shadow:0 4px 20px rgba(0,0,0,0.3);
-        }
-        
-        .logo{
-            font-size:26px;
-            font-weight:bold;
-            color:#ffcc00;
-            text-shadow:2px 2px 4px rgba(0,0,0,0.5);
-            display:flex;
-            align-items:center;
-            gap:10px;
-        }
-        
-        nav ul{
-            list-style:none;
-            display:flex;
-            gap:30px;
-        }
-        
-        nav a{
-            color:white;
-            text-decoration:none;
-            font-size:17px;
-            padding:10px 20px;
-            border-radius:25px;
-            transition:all 0.3s ease;
-        }
-        
-        nav a:hover, nav a.active{
-            background:linear-gradient(90deg, #ffcc00, #ff9900);
-            color:#1a1a2e;
-            transform:translateY(-2px);
-            box-shadow:0 4px 15px rgba(255,204,0,0.4);
-        }
-        
-        /* Dropdown */
-        .dropdown{
-            position:relative;
-        }
-        
-        .dropdown-menu{
-            display:none;
-            position:absolute;
-            background:white;
-            color:black;
-            padding:10px;
-            border-radius:5px;
-            min-width:180px;
-            box-shadow:0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .dropdown:hover .dropdown-menu{
-            display:block;
-        }
-        
-        .dropdown-menu li{
-            padding:8px 15px;
-            cursor:pointer;
-            list-style:none;
-        }
-        
-        .dropdown-menu li:hover{
-            background:#ffcc00;
-            color:black;
-            border-radius:3px;
-        }
-        
-        /* Hero */
-     <section class="hero">
-  <div class="hero-text">
-    <h1>Welcome to Khushi Tour and Travel</h1>
-    <p>
-      Your trusted partner for safe and comfortable taxi services across India.
-      24×7 Pickup & Drop Service for Jaipur, Delhi, Ajmer and many more.
-    </p>
-    <h3>Owner: Shankar Lal Saini</h3>
-  </div>
-</section>
 
-<style>
-.hero{
-  height: 400px;
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-  url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=500&auto=format&fit=crop&q=60');
-  
-  background-size: cover;
-  background-position: center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-}
+<meta charset="UTF-8">
+<title>Khushi Tour & Travel</title>
 
-.hero-text h1{
-  font-size:40px;
-  margin-bottom:10px;
-}
+<link rel="stylesheet" href="style.css">
 
-.hero-text p{
-  font-size:18px;
-  max-width:700px;
-}
-</style>
-        
-      
-    </style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">🚖 Khushi Tour & Travel</div>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li class="dropdown">
-                <a href="#">Services ▾</a>
-                <ul class="dropdown-menu">
-                    <li onclick="setRoute('Jaipur', 'Delhi')">Jaipur to Delhi</li>
-                    <li onclick="setRoute('Jaipur', 'Agra')">Jaipur to Agra</li>
-                    <li onclick="setRoute('Jaipur', 'Airport')">Airport Pickup</li>
-                    <li onclick="setRoute('Jaipur', 'Outstation')">Outstation Taxi</li>
-                    <li onclick="setRoute('Jaipur', 'Udaipur')">Jaipur to Udaipur</li>
-                    <li onclick="setRoute('Jaipur', 'Jodhpur')">Jaipur to Jodhpur</li>
-                    <li onclick="setRoute('Jaipur', 'Ajmer')">Jaipur to Ajmer</li>
-                    <li onclick="setRoute('Jaipur', 'Pushkar')">Jaipur to Pushkar</li>
-                </ul>
-            </li>
-            <li><a href="#booking">Book Taxi</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+
+<h2>🚕 KHUSHI TOUR & TRAVEL</h2>
+
+<nav>
+<a href="#">Cars</a>
+<a href="#">Services</a>
+<a href="#">Contact</a>
+</nav>
+
+<button class="call">Call Now</button>
+
 </header>
 
-<section style="text-align:center; padding:40px; background:#f4f4f4;">
-    <h1 style="color:#333;">Welcome to Khushi Tour and Travel</h1>
-    
-    <p style="font-size:18px; color:#555; max-width:700px; margin:auto;">
-        Your trusted partner for safe and comfortable taxi services across India.
-        We provide clean cars, professional drivers, and <b>24×7 pickup & drop service</b>
-        for cities like <b>Jaipur, Delhi, Ajmer</b> and many more.
-    </p>
 
-    <h3 style="margin-top:20px; color:#000;">
-        Owner: Shankar Lal Saini
-    </h3>
+<section class="hero">
+
+<h1>Book Trusted Taxi Rides</h1>
+<p>Local, Airport Pickup, and Outstation Travel</p>
+
+<div class="booking">
+
+<input type="text" placeholder="Pickup City">
+<input type="text" placeholder="Drop City">
+<input type="date">
+
+<button>Find Taxi</button>
+
+</div>
+
 </section>
-<section id="booking" class="booking">
-    <h2>Taxi Booking</h2>
-    <div class="form">
-        <input id="name" placeholder="Your Name">
-        <input id="phone" placeholder="Phone Number">
-        <input id="pickup" placeholder="Pickup City">
-        <input id="drop" placeholder="Drop City">
-        <input id="date" type="date">
-        <select id="cartype">
-            <option value="sedan">Sedan (₹12/km)</option>
-            <option value="ertiga">Ertiga (₹15/km)</option>
-            <option value="crysta">Innova Crysta (₹18/km)</option>
-        </select>
-        <input id="distance" type="number" placeholder="Distance (km)">
-        <button onclick="calculateFare()">Calculate Fare</button>
-    </div>
-    <h3 id="fare">Estimated Fare ₹0</h3>
-    <button class="whatsapp" onclick="sendWhatsApp()">Book on WhatsApp</button>
+
+
+<section class="cars">
+
+<h2>Choose Your Taxi</h2>
+
+<div class="car-container">
+
+<div class="card">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Maruti_Dzire.jpg">
+
+<h3>Swift Dzire</h3>
+
+<p>₹12 / km</p>
+
+<button>Book Now</button>
+
+<a href="https://wa.me/">WhatsApp</a>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Innova_Crysta.jpg">
+
+<h3>Toyota Innova</h3>
+
+<p>₹18 / km</p>
+
+<button>Book Now</button>
+
+<a href="https://wa.me/">WhatsApp</a>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Ertiga.jpg">
+
+<h3>Maruti Ertiga</h3>
+
+<p>₹15 / km</p>
+
+<button>Book Now</button>
+
+<a href="https://wa.me/">WhatsApp</a>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section class="services">
-    <h2>Our Services</h2>
-    <div class="cards">
-        <div class="card" onclick="setRoute('Jaipur', 'Delhi')">Jaipur → Delhi</div>
-        <div class="card" onclick="setRoute('Jaipur', 'Agra')">Jaipur → Agra</div>
-        <div class="card" onclick="setRoute('Jaipur', 'Airport')">Airport Pickup</div>
-        <div class="card" onclick="setRoute('Jaipur', 'Outstation')">Outstation Taxi</div>
-    </div>
+
+<h2>Taxi Services</h2>
+
+<div class="service-box">
+
+<div class="service">
+<h3>Pickup & Drop</h3>
+<p>Reliable city taxi service</p>
+</div>
+
+<div class="service">
+<h3>Outstation Taxi</h3>
+<p>Comfortable long distance rides</p>
+</div>
+
+<div class="service">
+<h3>Local Taxi</h3>
+<p>Hourly and full-day packages</p>
+</div>
+
+</div>
+
 </section>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>📞 <strong>9785125935</strong></p>
-    <p>📍 <strong>7 Anand Vihar, Saypura, Sanganer, Jaipur, Raj 302029</strong></p>
-    <p>👤 Owner: Shankar Lal Saini</p>
+
+<section class="contact">
+
+<h2>Contact Khushi Tour and Travel</h2>
+
+<a class="phone" href="tel:+919876543210">📞 Call Now</a>
+
+<a class="whatsapp" href="https://wa.me/919876543210">WhatsApp</a>
+
 </section>
 
-<script>
-    // Fare Calculator Configuration
-    const fareConfig = {
-        sedan: { ratePerKm: 12, tollTax: 200, boardTax: 0.20 },
-        ertiga: { ratePerKm: 15, tollTax: 250, boardTax: 0.20 },
-        crysta: { ratePerKm: 18, tollTax: 300, boardTax: 0.20 }
-    };
 
-    // Scroll to Booking Section
-    function scrollBooking(){
-        document.getElementById("booking").scrollIntoView({ behavior:"smooth" });
-    }
-
-    // Calculate Fare
-    function calculateFare() {
-        let car = document.getElementById("cartype").value;
-        let distance = document.getElementById("distance").value;
-        
-        if (!distance || isNaN(distance) || distance <= 0) {
-            alert("Please enter valid distance in km");
-            return;
-        }
-        
-        let config = fareConfig[car];
-        let baseFare = distance * config.ratePerKm;
-        let tollTax = config.tollTax;
-        let boardTax = 0;
-        let totalFare = baseFare + tollTax + boardTax;
-        
-        let fareBreakdown = `
-            <div class="fare-breakdown">
+</body>
+</html>
