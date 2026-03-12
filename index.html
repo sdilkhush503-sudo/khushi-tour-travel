@@ -1,140 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khushi Tour and Travel | Premium Taxi Service Rajasthan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FFCC00; /* Taxi Yellow */
+            --dark: #1A1A1A;
+            --light: #F4F4F4;
+        }
 
-<meta charset="UTF-8">
-<title>Khushi Tour & Travel</title>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: var(--dark); }
+        
+        /* Sticky Navigation */
+        nav {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
 
-<link rel="stylesheet" href="style.css">
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        nav ul li a:hover { color: var(--primary); }
 
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1549194388-f61be84a6e9e?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
+
+        /* Booking Form */
+        .booking-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-width: 1000px;
+            margin: -50px auto 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            color: var(--dark);
+        }
+
+        .booking-container input, .booking-container select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-book {
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-book:hover { background: #e6b800; }
+
+        /* Sections */
+        .section { padding: 60px 5%; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        
+        .card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-content { padding: 20px; }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        footer { background: var(--dark); color: white; padding: 40px 5%; text-align: center; }
+        .footer-links { margin: 20px 0; }
+        .footer-links a { color: var(--primary); margin: 0 10px; text-decoration: none; }
+    </style>
 </head>
-
 <body>
 
-<header>
+    <nav>
+        <div class="logo">KHUSHI TOUR & TRAVEL</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#fleet">Our Fleet</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<h2>🚕 KHUSHI TOUR & TRAVEL</h2>
+    <section class="hero" id="home">
+        <h1>Welcome to Khushi Tour and Travel</h1>
+        <p>Safe, Reliable and Affordable Taxi Service Across India</p>
+    </section>
 
-<nav>
-<a href="#">Cars</a>
-<a href="#">Services</a>
-<a href="#">Contact</a>
-</nav>
+    <div class="booking-container">
+        <input type="text" placeholder="Pickup Location">
+        <input type="text" placeholder="Drop Location">
+        <input type="date">
+        <select>
+            <option>Select Car Type</option>
+            <option>Sedan (Dzire/Etios)</option>
+            <option>SUV (Innova/Ertiga)</option>
+            <option>Luxury (Fortuner)</option>
+            <option>Tempo Traveller</option>
+        </select>
+        <button class="btn-book" onclick="alert('Thank you for booking with Khushi Tour and Travel! We will contact you shortly.')">Book Taxi Now</button>
+    </div>
 
-<button class="call">Call Now</button>
+    <section class="section" id="fleet">
+        <h2>Our Premium Fleet</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500" alt="Sedan">
+                <div class="card-content">
+                    <h3>Sedan Cars</h3>
+                    <p>Swift Dzire, Toyota Etios | 4+1 Seater</p>
+                    <p>AC • Luggage Space • Professional Driver</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500" alt="SUV">
+                <div class="card-content">
+                    <h3>SUV Cars</h3>
+                    <p>Innova Crysta, Ertiga | 6+1 Seater</p>
+                    <p>Luxury Seating • High Comfort • Long Trips</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1519214605650-76a613ee3245?w=500" alt="Tempo">
+                <div class="card-content">
+                    <h3>Tempo Traveller</h3>
+                    <p>12 to 20 Seater</p>
+                    <p>Perfect for Family Tours & Group Travel</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</header>
+    <section class="section" id="destinations" style="background: #f9f9f9;">
+        <h2>Popular Destinations</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Rajasthan Special</h3>
+                    <p>Jaipur, Udaipur, Jaisalmer, Jodhpur, Pushkar</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>North India Tours</h3>
+                    <p>Delhi, Agra (Taj Mahal), Haridwar, Shimla, Manali</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="section" id="contact">
+        <h2>Contact Our Owner</h2>
+        <div style="font-size: 1.5rem; margin-top: 20px;">
+            <p><strong>Shankar Lal Saini</strong></p>
+            <p><i class="fas fa-phone"></i> +91 9785125935</p>
+            <p><i class="fas fa-map-marker-alt"></i> Rajasthan, India</p>
+        </div>
+    </section>
 
-<section class="hero">
+    <a href="https://wa.me/919785125935" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<h1>Book Trusted Taxi Rides</h1>
-<p>Local, Airport Pickup, and Outstation Travel</p>
-
-<div class="booking">
-
-<input type="text" placeholder="Pickup City">
-<input type="text" placeholder="Drop City">
-<input type="date">
-
-<button>Find Taxi</button>
-
-</div>
-
-</section>
-
-
-<section class="cars">
-
-<h2>Choose Your Taxi</h2>
-
-<div class="car-container">
-
-<div class="card">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Maruti_Dzire.jpg">
-
-<h3>Swift Dzire</h3>
-
-<p>₹12 / km</p>
-
-<button>Book Now</button>
-
-<a href="https://wa.me/">WhatsApp</a>
-
-</div>
-
-
-<div class="card">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Innova_Crysta.jpg">
-
-<h3>Toyota Innova</h3>
-
-<p>₹18 / km</p>
-
-<button>Book Now</button>
-
-<a href="https://wa.me/">WhatsApp</a>
-
-</div>
-
-
-<div class="card">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Ertiga.jpg">
-
-<h3>Maruti Ertiga</h3>
-
-<p>₹15 / km</p>
-
-<button>Book Now</button>
-
-<a href="https://wa.me/">WhatsApp</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="services">
-
-<h2>Taxi Services</h2>
-
-<div class="service-box">
-
-<div class="service">
-<h3>Pickup & Drop</h3>
-<p>Reliable city taxi service</p>
-</div>
-
-<div class="service">
-<h3>Outstation Taxi</h3>
-<p>Comfortable long distance rides</p>
-</div>
-
-<div class="service">
-<h3>Local Taxi</h3>
-<p>Hourly and full-day packages</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="contact">
-
-<h2>Contact Khushi Tour and Travel</h2>
-
-<a class="phone" href="tel:+919876543210">📞 Call Now</a>
-
-<a class="whatsapp" href="https://wa.me/919876543210">WhatsApp</a>
-
-</section>
-
+    <footer>
+        <div class="logo">KHUSHI TOUR & TRAVEL</div>
+        <p>Your trusted travel partner in Rajasthan.</p>
+        <div class="footer-links">
+            <a href="#">About Us</a> | <a href="#">Terms</a> | <a href="#">Privacy Policy</a>
+        </div>
+        <p>&copy; 2024 Khushi Tour and Travel | Owner: Shankar Lal Saini</p>
+    </footer>
 
 </body>
 </html>
