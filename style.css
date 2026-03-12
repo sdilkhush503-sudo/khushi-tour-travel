@@ -1,119 +1,131 @@
-body{
+*{
 margin:0;
-font-family:Arial;
-background:#0a0a0a;
-color:white;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f4f4;
+color:#333;
 }
 
 header{
+background:black;
+color:white;
+padding:15px 8%;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px;
-background:black;
 }
 
-nav a{
+nav ul{
+list-style:none;
+display:flex;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
 color:white;
-margin:10px;
 text-decoration:none;
-}
-
-.call{
-background:yellow;
-border:none;
-padding:10px 15px;
 font-weight:bold;
 }
 
 .hero{
-text-align:center;
-padding:80px 20px;
-background:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70") center/cover;
-}
-
-.booking input{
-padding:10px;
-margin:5px;
-}
-
-.booking button{
-padding:10px 20px;
-background:yellow;
-border:none;
-}
-
-.cars{
-padding:50px;
-text-align:center;
-}
-
-.car-container{
+height:80vh;
+background:url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=1600') center/cover;
 display:flex;
 justify-content:center;
-flex-wrap:wrap;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:50px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+}
+
+.btn{
+background:#ffc107;
+padding:12px 25px;
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+color:black;
+border-radius:5px;
+font-weight:bold;
+}
+
+.section{
+padding:60px 8%;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
+margin-top:30px;
 }
 
 .card{
-background:#111;
-padding:20px;
-width:250px;
-border:1px solid #333;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 .card img{
 width:100%;
+height:180px;
+object-fit:cover;
 }
 
-.card button{
-background:yellow;
-border:none;
+.card h3{
 padding:10px;
-margin-top:10px;
 }
 
-.card a{
-display:block;
-margin-top:10px;
-color:lime;
+.card p{
+padding:0 10px 15px;
 }
 
-.services{
-padding:50px;
+form input,form select,form textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+footer{
+background:black;
+color:white;
 text-align:center;
-}
-
-.service-box{
-display:flex;
-justify-content:center;
-gap:20px;
-}
-
-.service{
-background:#111;
-padding:20px;
-width:200px;
-border:1px solid #333;
-}
-
-.contact{
-text-align:center;
-padding:50px;
-border-top:1px solid #333;
-}
-
-.phone{
-background:yellow;
-padding:10px 20px;
-text-decoration:none;
-color:black;
-margin:10px;
+padding:30px;
+margin-top:40px;
 }
 
 .whatsapp{
-background:green;
-padding:10px 20px;
-text-decoration:none;
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
 color:white;
+font-size:20px;
+padding:15px;
+border-radius:50%;
+text-decoration:none;
 }
