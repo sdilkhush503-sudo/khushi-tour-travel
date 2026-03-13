@@ -1,158 +1,239 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<title>Khushi Tour and Travel</title>
-
-<link rel="stylesheet" href="css/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khushi Tour and Travel - Taxi Booking</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-<header>
-
-<nav>
-
-<h2>Khushi Tour and Travel</h2>
-
-<ul>
-
-<li><a href="index.html">Home</a></li>
-
-<li><a href="book.html">Book Taxi</a></li>
-
-<li><a href="cars.html">Cars</a></li>
-
-<li><a href="places.html">Tourist Places</a></li>
-
-<li><a href="services.html">Services</a></li>
-
-<li><a href="about.html">About</a></li>
-
-<li><a href="contact.html">Contact</a></li>
-
-</ul>
-
-</nav>
-
-</header>
-
-<section class="hero">
-
-<div>
-
-<h1>Welcome to Khushi Tour and Travel</h1>
-
-<p>Safe, Reliable and Affordable Taxi Service Across India</p>
-
-<a href="book.html" class="btn">Book Taxi Now</a>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<h2>Popular Cars</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a">
-
-<h3>Swift Dzire</h3>
-
-<p>Comfortable sedan for local and outstation travel.</p>
-
-<a href="book.html" class="btn">Book</a>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1549921296-3c4d1a0c0a8d">
-
-<h3>Toyota Innova</h3>
-
-<p>Best SUV for family travel.</p>
-
-<a href="book.html" class="btn">Book</a>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
-
-<h3>Tempo Traveller</h3>
-
-<p>Best option for group trips.</p>
-
-<a href="book.html" class="btn">Book</a>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<h2>Popular Tourist Places</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1599661046289-e31897846e41">
-
-<h3>Jaipur</h3>
-
-<p>The Pink City of Rajasthan.</p>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1587474260584-136574528ed5">
-
-<h3>Udaipur</h3>
-
-<p>Beautiful lake city.</p>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1590086782792-42dd2350140d">
-
-<h3>Jaisalmer</h3>
-
-<p>Golden desert city.</p>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© Khushi Tour and Travel</p>
-
-<p>Owner: Shankar Lal Saini</p>
-
-<p>Phone: 9785125935</p>
-
-</footer>
-
-<a class="whatsapp" href="https://wa.me/919785125935">W</a>
-
-<script src="js/script.js"></script>
-
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">🚕 Khushi Tour and Travel</div>
+            <ul class="nav-menu">
+                <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                <li><a href="#booking" onclick="showSection('booking')">Book Taxi</a></li>
+                <li><a href="#services" onclick="showSection('services')">Services</a></li>
+                <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Khushi Tour and Travel</h1>
+                <p class="owner-name">Owner: Shankar Lal Saini</p>
+                <p class="tagline">Fast, Safe & Reliable Taxi Services in Rajasthan</p>
+                <button class="cta-button" onclick="showSection('booking')">Book Your Ride Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Taxi Section -->
+    <section id="booking" class="section">
+        <div class="booking-container">
+            <h2>Book Your Taxi</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pickup">Pickup Location:</label>
+        <select id="pickup" name="pickup">
+            <option value="Jaipur">Jaipur</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Agra">Agra</option>
+            <option value="Jodhpur">Jodhpur</option>
+            <option value="Ajmer">Ajmer</option>
+            <option value="Khatu Shyam">Khatu Shyam</option>
+            <option value="Mathura">Mathura</option>
+            <option value="Vrindavan">Vrindavan</option>
+            <option value="Udaipur">Udaipur</option>
+            <option value="Bikaner">Bikaner</option>
+            <option value="Pushkar">Pushkar</option>
+            <option value="Sikar">Sikar</option>
+            <option value="Alwar">Alwar</option>
+            <option value="Bhilwara">Bhilwara</option>      
+            <option value="Kota">Kota</option>
+            <option value="Bundi">Bundi</option>
+            <option value="Shekhawati">Shekhawati</option>
+            <option value="Churu">Churu</option>
+            <option value="Dungarpur">Dungarpur</option>
+            <option value="Banswara">Banswara</option>
+            <option value="Pali">Pali</option>
+            <option value="Sumerpur">Sumerpur</option>
+            <option value="Nathdwara">Nathdwara</option>
+            <option value="Mount Abu">Mount Abu</option>
+            <option value="Barmer">Barmer</option>
+            <option value="Jaisalmer">Jaisalmer</option>
+            <option value="Mohangarh">Mohangarh</option>
+            <option value="Khimsar">Khimsar</option>
+            <option value="Gajner">Gajner</option>
+            <option value="Fatehpur">Fatehpur</option>
+            <option value="Neem ka Thana">Neem ka Thana</option>
+        </select><br><br>
+
+
+                <div class="form-group">
+                       <label for="drop">Drop Location:</label>
+        <select id="drop" name="drop">
+            <option value="Jaipur">Jaipur</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Agra">Agra</option>
+            <option value="Jodhpur">Jodhpur</option>
+            <option value="Ajmer">Ajmer</option>
+            <option value="Khatu Shyam">Khatu Shyam</option>
+            <option value="Mathura">Mathura</option>
+            <option value="Vrindavan">Vrindavan</option>
+            <option value="Udaipur">Udaipur</option>
+            <option value="Bikaner">Bikaner</option>
+            <option value="Pushkar">Pushkar</option>
+            <option value="Sikar">Sikar</option>
+            <option value="Alwar">Alwar</option>
+            <option value="Bhilwara">Bhilwara</option>
+            <option value="Kota">Kota</option>
+            <option value="Bundi">Bundi</option>
+            <option value="Shekhawati">Shekhawati</option>
+            <option value="Churu">Churu</option>
+            <option value="Dungarpur">Dungarpur</option>
+            <option value="Banswara">Banswara</option>
+            <option value="Pali">Pali</option>
+            <option value="Sumerpur">Sumerpur</option>
+            <option value="Nathdwara">Nathdwara</option>
+            <option value="Mount Abu">Mount Abu</option>
+            <option value="Barmer">Barmer</option>
+            <option value="Jaisalmer">Jaisalmer</option>
+            <option value="Mohangarh">Mohangarh</option>
+            <option value="Khimsar">Khimsar</option>
+            <option value="Gajner">Gajner</option>
+            <option value="Fatehpur">Fatehpur</option>
+            <option value="Neem ka Thana">Neem ka Thana</option>
+        </select><br><br>
+                <div class="form-group">
+                    <label for="date">Travel Date *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cartype">Car Type *</label>
+                   <select name="car_type" required>
+    <option value="">Select Car Type</option>
+
+    <!-- Sedan Cars -->
+    <option value="swift_dzire">Maruti Swift Dzire (Sedan)</option>
+    <option value="toyota_etios">Toyota Etios (Sedan)</option>
+    <option value="honda_amaze">Honda Amaze (Sedan)</option>
+    <option value="hyundai_aura">Hyundai Aura (Sedan)</option>
+
+    <!-- SUV / MUV Cars -->
+    <option value="maruti_ertiga">Maruti Ertiga (SUV)</option>
+    <option value="toyota_innova">Toyota Innova (SUV)</option>
+    <option value="innova_crysta">Toyota Innova Crysta (SUV)</option>
+    <option value="kia_carens">Kia Carens (SUV)</option>
+    <option value="mahindra_xuv500">Mahindra XUV500 (SUV)</option>
+
+    <!-- Luxury Cars -->
+    <option value="toyota_fortuner">Toyota Fortuner (Luxury SUV)</option>
+    <option value="bmw_5_series">BMW 5 Series (Luxury)</option>
+    <option value="audi_a6">Audi A6 (Luxury)</option>
+    <option value="mercedes_e_class">Mercedes E Class (Luxury)</option>
+
+    <!-- Tempo Traveller -->
+    <option value="tempo_9">Tempo Traveller (9 Seater)</option>
+    <option value="tempo_12">Tempo Traveller (12 Seater)</option>
+    <option value="tempo_17">Tempo Traveller (17 Seater)</option>
+    <option value="tempo_20">Tempo Traveller (20 Seater)</option>
+
+    <!-- Mini Bus -->
+    <option value="mini_bus">Mini Bus (25 Seater)</option>
+</select>
+                </div>
+
+                <button type="button" class="whatsapp-button" onclick="sendToWhatsApp()">
+                    📱 Book on WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="services-container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚕</div>
+                    <h3>Jaipur to Delhi</h3>
+                    <p>Fast and comfortable journey to Delhi from Jaipur. Distance: 240 km</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚕</div>
+                    <h3>Jaipur to Agra</h3>
+                    <p>Visit the Taj Mahal. Comfortable ride to Agra. Distance: 240 km</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚕</div>
+                    <h3>Jaipur to Ajmer</h3>
+                    <p>Pilgrimage and leisure trips to Ajmer Sharif. Distance: 135 km</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✈️</div>
+                    <h3>Airport Pickup & Drop</h3>
+                    <p>24×7 Airport services. Professional drivers. On-time guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>📞 Phone</h3>
+                    <p><a href="tel:+919785125935">+91 9785-125-935</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>💬 WhatsApp</h3>
+                    <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%20and%20Travel" target="_blank" class="whatsapp-link">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>📍 Address</h3>
+                    <p>Jaipur, Rajasthan<br>India</p>
+                </div>
+            </div>
+
+            <div class="contact-buttons">
+                <a href="tel:+919785125935" class="call-button">☎️ Call Now</a>
+                <a href="https://wa.me/919829123456?text=Hello%20Khushi%20Tour%20and%20Travel" target="_blank" class="whatsapp-button">💬 WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Khushi Tour and Travel. All rights reserved. | Owner: Shankar Lal Saini</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
