@@ -3,237 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khushi Tour and Travel - Taxi Booking</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Khushi Tour and Travel - All India Car Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+        }
+
+        .address-bar {
+            background: rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* Navigation */
+        nav {
+            background: #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: #ff6b35;
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero .btn {
+            background: #ff6b35;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 50px 20px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .service-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        .service-box h3 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        /* Cars Section */
+        .cars {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .cars h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .car-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            width: 320px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 200px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+            overflow: hidden;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .car-details {
+            padding: 20px;
+        }
+
+        .car-details h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .car-price {
+            color: #ff6b35;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .car-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .car-features {
+            list-style: none;
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .car-features li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .car-features li::before {
+            content: '✓ ';
+            color: green;
+        }
+
+        .book-btn {
+            display: block;
+            background: #ff6b35;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .book-btn:hover {
+            background: #e55a2b;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #333;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 1.3rem;
+            margin: 20px 0;
+        }
+
+        .address-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .address-box h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .car-grid, .service-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">🚕 Khushi Tour and Travel</div>
-            <ul class="nav-menu">
-                <li><a href="#home" onclick="showSection('home')">Home</a></li>
-                <li><a href="#booking" onclick="showSection('booking')">Book Taxi</a></li>
-                <li><a href="#services" onclick="showSection('services')">Services</a></li>
-                <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
-            </ul>
+
+    <!-- Header -->
+    <header>
+        <h1>🚌 Khushi Tour and Travel</h1>
+        <p>All India Car & Bus Booking Service</p>
+        
+        <div class="address-bar">
+            📍 Plot No. 7, Anand Vihar, Sanganer, Jaipur, Rajasthan - 302029
         </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#cars">Our Cars</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Home Section -->
-    <section id="home" class="section active">
-        <div class="hero">
-            <div class="hero-content">
-                <h1>Welcome to Khushi Tour and Travel</h1>
-                <p class="owner-name">Owner: Shankar Lal Saini</p>
-                <p class="tagline">Fast, Safe & Reliable Taxi Services in Rajasthan</p>
-                <button class="cta-button" onclick="showSection('booking')">Book Your Ride Now</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Book Taxi Section -->
-    <section id="booking" class="section">
-        <div class="booking-container">
-            <h2>Book Your Taxi</h2>
-            <form id="bookingForm">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="pickup">Pickup Location:</label>
-        <select id="pickup" name="pickup">
-            <option value="Jaipur">Jaipur</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Agra">Agra</option>
-            <option value="Jodhpur">Jodhpur</option>
-            <option value="Ajmer">Ajmer</option>
-            <option value="Khatu Shyam">Khatu Shyam</option>
-            <option value="Mathura">Mathura</option>
-            <option value="Vrindavan">Vrindavan</option>
-            <option value="Udaipur">Udaipur</option>
-            <option value="Bikaner">Bikaner</option>
-            <option value="Pushkar">Pushkar</option>
-            <option value="Sikar">Sikar</option>
-            <option value="Alwar">Alwar</option>
-            <option value="Bhilwara">Bhilwara</option>      
-            <option value="Kota">Kota</option>
-            <option value="Bundi">Bundi</option>
-            <option value="Shekhawati">Shekhawati</option>
-            <option value="Churu">Churu</option>
-            <option value="Dungarpur">Dungarpur</option>
-            <option value="Banswara">Banswara</option>
-            <option value="Pali">Pali</option>
-            <option value="Sumerpur">Sumerpur</option>
-            <option value="Nathdwara">Nathdwara</option>
-            <option value="Mount Abu">Mount Abu</option>
-            <option value="Barmer">Barmer</option>
-            <option value="Jaisalmer">Jaisalmer</option>
-            <option value="Mohangarh">Mohangarh</option>
-            <option value="Khimsar">Khimsar</option>
-            <option value="Gajner">Gajner</option>
-            <option value="Fatehpur">Fatehpur</option>
-            <option value="Neem ka Thana">Neem ka Thana</option>
-        </select><br><br>
-
-
-                <div class="form-group">
-                       <label for="drop">Drop Location:</label>
-        <select id="drop" name="drop">
-            <option value="Jaipur">Jaipur</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Agra">Agra</option>
-            <option value="Jodhpur">Jodhpur</option>
-            <option value="Ajmer">Ajmer</option>
-            <option value="Khatu Shyam">Khatu Shyam</option>
-            <option value="Mathura">Mathura</option>
-            <option value="Vrindavan">Vrindavan</option>
-            <option value="Udaipur">Udaipur</option>
-            <option value="Bikaner">Bikaner</option>
-            <option value="Pushkar">Pushkar</option>
-            <option value="Sikar">Sikar</option>
-            <option value="Alwar">Alwar</option>
-            <option value="Bhilwara">Bhilwara</option>
-            <option value="Kota">Kota</option>
-            <option value="Bundi">Bundi</option>
-            <option value="Shekhawati">Shekhawati</option>
-            <option value="Churu">Churu</option>
-            <option value="Dungarpur">Dungarpur</option>
-            <option value="Banswara">Banswara</option>
-            <option value="Pali">Pali</option>
-            <option value="Sumerpur">Sumerpur</option>
-            <option value="Nathdwara">Nathdwara</option>
-            <option value="Mount Abu">Mount Abu</option>
-            <option value="Barmer">Barmer</option>
-            <option value="Jaisalmer">Jaisalmer</option>
-            <option value="Mohangarh">Mohangarh</option>
-            <option value="Khimsar">Khimsar</option>
-            <option value="Gajner">Gajner</option>
-            <option value="Fatehpur">Fatehpur</option>
-            <option value="Neem ka Thana">Neem ka Thana</option>
-        </select><br><br>
-                <div class="form-group">
-                    <label for="date">Travel Date *</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="cartype">Car Type *</label>
-                   <select name="car_type" required>
-    <option value="">Select Car Type</option>
-
-    <!-- Sedan Cars -->
-    <option value="swift_dzire">Maruti Swift Dzire (Sedan)</option>
-    <option value="toyota_etios">Toyota Etios (Sedan)</option>
-    <option value="honda_amaze">Honda Amaze (Sedan)</option>
-    <option value="hyundai_aura">Hyundai Aura (Sedan)</option>
-
-    <!-- SUV / MUV Cars -->
-    <option value="maruti_ertiga">Maruti Ertiga (SUV)</option>
-    <option value="toyota_innova">Toyota Innova (SUV)</option>
-    <option value="innova_crysta">Toyota Innova Crysta (SUV)</option>
-    <option value="kia_carens">Kia Carens (SUV)</option>
-    <option value="mahindra_xuv500">Mahindra XUV500 (SUV)</option>
-
-    <!-- Luxury Cars -->
-    <option value="toyota_fortuner">Toyota Fortuner (Luxury SUV)</option>
-    <option value="bmw_5_series">BMW 5 Series (Luxury)</option>
-    <option value="audi_a6">Audi A6 (Luxury)</option>
-    <option value="mercedes_e_class">Mercedes E Class (Luxury)</option>
-
-    <!-- Tempo Traveller -->
-    <option value="tempo_9">Tempo Traveller (9 Seater)</option>
-    <option value="tempo_12">Tempo Traveller (12 Seater)</option>
-    <option value="tempo_17">Tempo Traveller (17 Seater)</option>
-    <option value="tempo_20">Tempo Traveller (20 Seater)</option>
-
-    <!-- Mini Bus -->
-    <option value="mini_bus">Mini Bus (25 Seater)</option>
-</select>
-                </div>
-
-                <button type="button" class="whatsapp-button" onclick="sendToWhatsApp()">
-                    📱 Book on WhatsApp
-                </button>
-            </form>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Safe & Comfortable Journey</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 20px;">All India Cab Service | Best Rates | Professional Drivers</p>
+            <a href="#cars" class="btn">Book Your Car Now</a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section">
-        <div class="services-container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🚕</div>
-                    <h3>Jaipur to Delhi</h3>
-                    <p>Fast and comfortable journey to Delhi from Jaipur. Distance: 240 km</p>
-                </div>
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-box">
+                <h3>🚗 All India Travel</h3>
+                <p>Hum Sanganer, Jaipur se kahin bhi le ja sakte hain. Delhi, Mumbai, Goa, Jaipur, Udaipur aur bahut se cities.</p>
+            </div>
+            <div class="service-box">
+                <h3>🏨 Hotel Booking</h3>
+                <p>Aapki travel planning ke liye hum best hotels bhi book kar sakte hain best rates par.</p>
+            </div>
+            <div class="service-box">
+                <h3>✈️ Airport Pickup & Drop</h3>
+                <p>Jaipur Airport se pickup aur drop service available hai. Time pe delivery guaranteed.</p>
+            </div>
+            <div class="service-box">
+                <h3>🏰 Local Tour</h3>
+                <p>Jaipur local darshan, Ajmer, Pushkar, Udaipur tour packages available hain.</p>
+            </div>
+        </div>
+    </section>
 
-                <div class="service-card">
-                    <div class="service-icon">🚕</div>
-                    <h3>Jaipur to Agra</h3>
-                    <p>Visit the Taj Mahal. Comfortable ride to Agra. Distance: 240 km</p>
+    <!-- Cars Section -->
+    <section class="cars" id="cars">
+        <h2>Our Fleet - Choose Your Car</h2>
+        <div class="car-grid">
+            
+            <!-- Swift Dzire -->
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1605515298946-d062f2e9da53?w=400" alt="Swift Dzire">
                 </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🚕</div>
-                    <h3>Jaipur to Ajmer</h3>
-                    <p>Pilgrimage and leisure trips to Ajmer Sharif. Distance: 135 km</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">✈️</div>
-                    <h3>Airport Pickup & Drop</h3>
-                    <p>24×7 Airport services. Professional drivers. On-time guarantee.</p>
+                <div class="car-details">
+                    <h3>Swift Dzire</h3>
+                    <p class="car-price">₹10/km <span>(All India)</span></p>
+                    <ul class="car-features">
+                        <li>4 Seater</li>
+                        <li>AC Available</li>
+                        <li>Music System</li>
+                        <li>Clean & Comfortable</li>
+                    </ul>
+                    <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%2C%20I%20want%20to%20book%20Swift%20Dzire" class="book-btn" target="_blank">📱 Book on WhatsApp</a>
                 </div>
             </div>
+
+            <!-- Ertiga -->
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400" alt="Ertiga">
+                </div>
+                <div class="car-details">
+                    <h3>Ertiga (Lxi/Vxi)</h3>
+                    <p class="car-price">₹14/km <span>(All India)</span></p>
+                    <ul class="car-features">
+                        <li>6-7 Seater</li>
+                        <li>AC Available</li>
+                        <li>Music System</li>
+                        <li>Spacious & Comfortable</li>
+                    </ul>
+                    <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%2C%20I%20want%20to%20book%20Ertiga" class="book-btn" target="_blank">📱 Book on WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Innova Crysta -->
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400" alt="Innova">
+                </div>
+                <div class="car-details">
+                    <h3>Innova Crysta</h3>
+                    <p class="car-price">₹18/km <span>(All India)</span></p>
+                    <ul class="car-features">
+                        <li>6-7 Seater Premium</li>
+                        <li>Full AC</li>
+                        <li>Premium Music</li>
+                        <li>Luxury Comfort</li>
+                    </ul>
+                    <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%2C%20I%20want%20to%20book%20Innova%20Crysta" class="book-btn" target="_blank">📱 Book on WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Tempo Traveller -->
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400" alt="Tempo Traveller">
+                </div>
+                <div class="car-details">
+                    <h3>Tempo Traveller</h3>
+                    <p class="car-price">₹16/km <span>(All India)</span></p>
+                    <ul class="car-features">
+                        <li>12 Seater</li>
+                        <li>AC Available</li>
+                        <li>Pushback Seats</li>
+                        <li>Perfect for Family Tours</li>
+                    </ul>
+                    <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%2C%20I%20want%20to%20book%20Tempo%20Traveller" class="book-btn" target="_blank">📱 Book on WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Bus -->
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400" alt="Bus">
+                </div>
+                <div class="car-details">
+                    <h3>Bus (35/45 Seater)</h3>
+                    <p class="car-price">₹30/km <span>(All India)</span></p>
+                    <ul class="car-features">
+                        <li>35-45 Seater</li>
+                        <li>AC/Non-AC</li>
+                        <li>Pushback Seats</li>
+                        <li>Perfect for Group Tours</li>
+                    </ul>
+                    <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%2C%20I%20want%20to%20book%20a%20Bus" class="book-btn" target="_blank">📱 Book on WhatsApp</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="contact-container">
-            <h2>Contact Us</h2>
-            
-            <div class="contact-info">
-                <div class="contact-card">
-                    <h3>📞 Phone</h3>
-                    <p><a href="tel:+919785125935">+91 9785-125-935</a></p>
-                </div>
+    <section class="contact" id="contact">
+        <h2>📞 Contact Us</h2>
+        
+        <div class="address-box">
+            <h3>📍 Our Address:</h3>
+            <p>Plot No. 7, Anand Vihar</p>
+            <p>Sanganer, Jaipur</p>
+            <p>Rajasthan - 302029</p>
+        </div>
+        
+        <div class="contact-info">
+            <p>📞 <strong>Call Us:</strong> +91 9785125935</p>
+            <p>📱 <strong>WhatsApp:</strong> +91 9785125935</p>
+            <p>🌐 <strong>Service:</strong> All India</p>
+        </div>
 
-                <div class="contact-card">
-                    <h3>💬 WhatsApp</h3>
-                    <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%20and%20Travel" target="_blank" class="whatsapp-link">
-                        Chat on WhatsApp
-                    </a>
-                </div>
+        <a href="https://wa.me/919785125935?text=Hello%20Khushi%20Tour%2C%20I%20want%20to%20book%20a%20car" class="whatsapp-btn" target="_blank">
+            💬 Book via WhatsApp
+        </a>
 
-                <div class="contact-card">
-                    <h3>📍 Address</h3>
-                    <p>Jaipur, Rajasthan<br>India</p>
-                </div>
-            </div>
-
-            <div class="contact-buttons">
-                <a href="tel:+919785125935" class="call-button">☎️ Call Now</a>
-                <a href="https://wa.me/919829123456?text=Hello%20Khushi%20Tour%20and%20Travel" target="_blank" class="whatsapp-button">💬 WhatsApp</a>
-            </div>
+        <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h3>Why Choose Us?</h3>
+            <p style="margin-top: 15px;">✓ Best Price Guarantee</p>
+            <p>✓ Professional & Verified Drivers</p>
+            <p>✓ 24/7 Customer Support</p>
+            <p>✓ Clean & Well-Maintained Vehicles</p>
+            <p>✓ On-Time Service</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2026 Khushi Tour and Travel. All rights reserved. | Owner: Shankar Lal Saini</p>
+    <footer>
+        <p>© 2024 Khushi Tour and Travel. All Rights Reserved.</p>
+        <p>📍 Plot No. 7, Anand Vihar, Sanganer, Jaipur - 302029</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
