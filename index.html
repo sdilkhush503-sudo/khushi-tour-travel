@@ -1189,15 +1189,93 @@ function toggleMobile() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
+// ── BOOKING STORAGE ──────────────────────────────────────────
+const ADMIN_PASS = "khushi123";
+let bookings = JSON.parse(localStorage.getItem('ktt_bookings') || '[]');
+
+function saveBookings() {
+  localStorage.setItem('ktt_bookings', JSON.stringify(bookings));
+}
+
+function getFormData(form) {
+  const inputs = form.querySelectorAll('input,select,textarea');
+  const data = {};
+  inputs.forEach(inp => {
+    if (inp.name) data[inp.name] = inp.value;
+  });
+  return data;
+}
+
+function sendWhatsApp(booking) {
+  const msg = `🚖 *NAYI BOOKING - Khushi Tour & Travel*
+━━━━━━━━━━━━━━━━━━
+👤 *Naam:* ${booking.name}
+📞 *Phone:* ${booking.phone}
+📍 *Pickup:* ${booking.pickup}
+📍 *Drop:* ${booking.drop}
+📅 *Date:* ${booking.date}
+⏰ *Time:* ${booking.time}
+👥 *Passengers:* ${booking.passengers}
+🚗 *Car:* ${booking.car}
+📝 *Special:* ${booking.special || 'Koi nahi'}
+━━━━━━━━━━━━━━━━━━
+🕐 Booking Time: ${booking.bookedAt}`;
+  const encoded = encodeURIComponent(msg);
+  window.open(`https://wa.me/919785125935?text=${encoded}`, '_blank');
+}
+
 function quickBook(e) {
   e.preventDefault();
+  const form = e.target;
+  const inputs = form.querySelectorAll('input,select');
+  const vals = Array.from(inputs).map(i => i.value);
+  // Save quick booking
+  const booking = {
+    id: 'KTT' + Date.now(),
+    name: vals[0] || '',
+    phone: vals[1] || '',
+    pickup: vals[2] || '',
+    drop: vals[3] || '',
+    date: vals[4] || '',
+    time: '',
+    passengers: '',
+    car: vals[5] || '',
+    special: '',
+    bookedAt: new Date().toLocaleString('hi-IN'),
+    source: 'Quick Booking'
+  };
+  bookings.unshift(booking);
+  saveBookings();
+  sendWhatsApp(booking);
   showPage('book');
 }
 
 function submitBooking(e) {
   e.preventDefault();
+  const form = e.target;
+  const inputs = form.querySelectorAll('input,select,textarea');
+  const vals = Array.from(inputs).map(i => i.value);
+  const booking = {
+    id: 'KTT' + Date.now(),
+    name: vals[0] || '',
+    phone: vals[1] || '',
+    pickup: vals[2] || '',
+    drop: vals[3] || '',
+    date: vals[4] || '',
+    time: vals[5] || '',
+    passengers: vals[6] || '',
+    car: vals[7] || '',
+    special: vals[8] || '',
+    bookedAt: new Date().toLocaleString('hi-IN'),
+    source: 'Main Booking Form'
+  };
+  bookings.unshift(booking);
+  saveBookings();
+  // Show success
   document.getElementById('bookingForm').style.display = 'none';
   document.getElementById('successMsg').classList.add('show');
+  // Send WhatsApp
+  sendWhatsApp(booking);
 }
 
 function contactSubmit(e) {
@@ -1205,6 +1283,101 @@ function contactSubmit(e) {
   e.target.style.display = 'none';
   document.getElementById('contactSuccess').style.display = 'block';
 }
+
+// ── ADMIN PANEL ───────────────────────────────────────────────
+function openAdmin() {
+  document.getElementById('adminOverlay').style.display = 'flex';
+  document.getElementById('adminLoginBox').style.display = 'block';
+  document.getElementById('adminDashboard').style.display = 'none';
+  document.getElementById('adminPassInput').value = '';
+  document.getElementById('adminLoginError').style.display = 'none';
+}
+
+function closeAdmin() {
+  document.getElementById('adminOverlay').style.display = 'none';
+}
+
+function adminLogin() {
+  const pass = document.getElementById('adminPassInput').value;
+  if (pass === ADMIN_PASS) {
+    document.getElementById('adminLoginBox').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = 'block';
+    renderBookings();
+  } else {
+    document.getElementById('adminLoginError').style.display = 'block';
+  }
+}
+
+function deleteBooking(id) {
+  if (confirm('Yeh booking delete karein?')) {
+    bookings = bookings.filter(b => b.id !== id);
+    saveBookings();
+    renderBookings();
+  }
+}
+
+function callBooking(phone) {
+  window.open('tel:' + phone);
+}
+
+function waBooking(booking) {
+  const msg = `Namaste ${booking.name} ji!\n\nAapki booking confirm ho gayi hai.\n🚗 Car: ${booking.car}\n📍 Pickup: ${booking.pickup}\n📅 Date: ${booking.date} | ${booking.time}\n\nDhanyawaad - Khushi Tour & Travel\n📞 9785125935`;
+  window.open('https://wa.me/91' + booking.phone + '?text=' + encodeURIComponent(msg), '_blank');
+}
+
+function filterBookings() {
+  const q = document.getElementById('adminSearch').value.toLowerCase();
+  const cards = document.querySelectorAll('.booking-row');
+  cards.forEach(c => {
+    c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+function renderBookings() {
+  bookings = JSON.parse(localStorage.getItem('ktt_bookings') || '[]');
+  const list = document.getElementById('bookingsList');
+  const total = document.getElementById('totalBookings');
+  const today = document.getElementById('todayBookings');
+  const todayStr = new Date().toLocaleDateString('en-IN');
+  const todayCount = bookings.filter(b => b.bookedAt && b.bookedAt.includes(todayStr.split('/')[0])).length;
+  total.textContent = bookings.length;
+  today.textContent = todayCount;
+  if (bookings.length === 0) {
+    list.innerHTML = '<div style="text-align:center;padding:40px;color:#888;"><i class="fas fa-inbox" style="font-size:40px;margin-bottom:12px;display:block;"></i>Abhi tak koi booking nahi aayi</div>';
+    return;
+  }
+  list.innerHTML = bookings.map((b,i) => `
+    <div class="booking-row" style="background:#fff;border:1px solid #e8e8e0;border-radius:12px;padding:18px;margin-bottom:14px;border-left:4px solid #f5c518;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+        <div>
+          <span style="background:#f5c518;color:#000;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.5px;">#${b.id}</span>
+          <span style="margin-left:8px;font-size:11px;color:#888;">${b.bookedAt}</span>
+          <span style="margin-left:8px;background:#e8f5e9;color:#2e7d32;font-size:11px;padding:2px 8px;border-radius:20px;">${b.source || 'Booking Form'}</span>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button onclick="callBooking('${b.phone}')" style="background:#e3f2fd;color:#1565c0;border:none;border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:600;"><i class="fas fa-phone"></i> Call</button>
+          <button onclick='waBooking(${JSON.stringify(b)})' style="background:#e8f5e9;color:#2e7d32;border:none;border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:600;"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+          <button onclick="deleteBooking('${b.id}')" style="background:#ffebee;color:#c62828;border:none;border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+        <div><span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.8px;">Naam</span><br><strong style="font-size:15px;">${b.name}</strong></div>
+        <div><span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.8px;">Phone</span><br><strong style="font-size:15px;">${b.phone}</strong></div>
+        <div><span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.8px;">Car</span><br><strong style="font-size:15px;color:#d4a500;">${b.car}</strong></div>
+        <div><span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.8px;">Date & Time</span><br><strong style="font-size:15px;">${b.date} ${b.time}</strong></div>
+        <div><span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.8px;">Pickup</span><br><strong style="font-size:14px;">${b.pickup}</strong></div>
+        <div><span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.8px;">Drop</span><br><strong style="font-size:14px;">${b.drop}</strong></div>
+        ${b.passengers ? `<div><span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.8px;">Passengers</span><br><strong style="font-size:14px;">${b.passengers}</strong></div>` : ''}
+        ${b.special ? `<div style="grid-column:1/-1;"><span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.8px;">Special Request</span><br><span style="font-size:14px;">${b.special}</span></div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+// close admin on overlay click
+document.addEventListener('click', function(e) {
+  if (e.target.id === 'adminOverlay') closeAdmin();
+});
 
 function filterCars(cat, el) {
   document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
@@ -1258,5 +1431,63 @@ document.querySelectorAll('.fade-up').forEach(el => {
   observer.observe(el);
 });
 </script>
+
+<!-- ══ ADMIN BUTTON ══ -->
+<div onclick="openAdmin()" style="position:fixed;bottom:100px;right:28px;z-index:900;width:52px;height:52px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all 0.3s;" title="Admin Panel">
+  <i class="fas fa-user-shield" style="color:#f5c518;font-size:20px;"></i>
+</div>
+
+<!-- ══ ADMIN MODAL ══ -->
+<div id="adminOverlay" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px;">
+
+  <!-- LOGIN BOX -->
+  <div id="adminLoginBox" style="background:#fff;border-radius:20px;padding:40px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <div style="width:64px;height:64px;background:#f5c518;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;"><i class="fas fa-user-shield" style="font-size:28px;color:#000;"></i></div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:6px;">Admin Login</h2>
+    <p style="font-size:14px;color:#888;margin-bottom:24px;">Sirf Shankar Lal Saini ke liye</p>
+    <input id="adminPassInput" type="password" placeholder="Password daalen" onkeydown="if(event.key==='Enter')adminLogin()" style="width:100%;padding:13px 16px;border:1px solid #e0e0e0;border-radius:10px;font-size:15px;outline:none;margin-bottom:10px;text-align:center;letter-spacing:3px;">
+    <div id="adminLoginError" style="display:none;color:#c62828;font-size:13px;margin-bottom:10px;"><i class="fas fa-exclamation-circle"></i> Password galat hai!</div>
+    <button onclick="adminLogin()" style="width:100%;padding:13px;background:#1a1a1a;color:#f5c518;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px;">Login Karein</button>
+    <button onclick="closeAdmin()" style="width:100%;padding:10px;background:transparent;border:1px solid #e0e0e0;border-radius:10px;font-size:14px;cursor:pointer;color:#888;">Wapas Jayein</button>
+    <p style="font-size:12px;color:#bbb;margin-top:16px;">Default password: <strong>khushi123</strong></p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="adminDashboard" style="display:none;background:#f5f5f0;border-radius:20px;max-width:900px;width:100%;max-height:90vh;overflow:hidden;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <!-- Header -->
+    <div style="background:#1a1a1a;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;border-radius:20px 20px 0 0;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:40px;height:40px;background:#f5c518;border-radius:10px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-taxi" style="color:#000;font-size:18px;"></i></div>
+        <div>
+          <div style="color:#fff;font-weight:700;font-size:16px;">Khushi Tour & Travel</div>
+          <div style="color:#f5c518;font-size:12px;letter-spacing:1px;">ADMIN PANEL</div>
+        </div>
+      </div>
+      <button onclick="closeAdmin()" style="background:rgba(255,255,255,0.1);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;">✕</button>
+    </div>
+    <!-- Stats -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:16px 24px 0;">
+      <div style="background:#fff;border-radius:12px;padding:16px;text-align:center;border-left:4px solid #f5c518;">
+        <div style="font-size:28px;font-weight:700;color:#1a1a1a;" id="totalBookings">0</div>
+        <div style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px;">Kul Bookings</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px;text-align:center;border-left:4px solid #28a745;">
+        <div style="font-size:28px;font-weight:700;color:#1a1a1a;" id="todayBookings">0</div>
+        <div style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px;">Aaj Ki Bookings</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px;text-align:center;border-left:4px solid #1565c0;">
+        <div style="font-size:28px;font-weight:700;color:#1a1a1a;">24/7</div>
+        <div style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px;">Service Active</div>
+      </div>
+    </div>
+    <!-- Search + Refresh -->
+    <div style="padding:12px 24px;display:flex;gap:10px;">
+      <input id="adminSearch" type="text" placeholder="🔍 Naam, phone, ya jagah se dhundein..." oninput="filterBookings()" style="flex:1;padding:11px 14px;border:1px solid #e0e0e0;border-radius:10px;font-size:14px;outline:none;background:#fff;">
+      <button onclick="renderBookings()" style="padding:11px 18px;background:#f5c518;border:none;border-radius:10px;cursor:pointer;font-weight:700;font-size:13px;"><i class="fas fa-sync-alt"></i> Refresh</button>
+    </div>
+    <!-- Bookings List -->
+    <div id="bookingsList" style="padding:0 24px 24px;overflow-y:auto;flex:1;max-height:55vh;"></div>
+  </div>
+</div>
 </body>
 </html>
