@@ -1209,15 +1209,15 @@ function getFormData(form) {
 function sendWhatsApp(booking) {
   const msg = `🚖 *NAYI BOOKING - Khushi Tour & Travel*
 ━━━━━━━━━━━━━━━━━━
-👤 *Naam:* ${booking.name}
-📞 *Phone:* ${booking.phone}
-📍 *Pickup:* ${booking.pickup}
-📍 *Drop:* ${booking.drop}
-📅 *Date:* ${booking.date}
-⏰ *Time:* ${booking.time}
-👥 *Passengers:* ${booking.passengers}
-🚗 *Car:* ${booking.car}
-📝 *Special:* ${booking.special || 'Koi nahi'}
+👤 Naam: ${booking.name}
+📞 Phone: ${booking.phone}
+📍 Pickup: ${booking.pickup}
+📍 Drop: ${booking.drop}
+📅 Date: ${booking.date}
+⏰ Time: ${booking.time}
+👥 Passengers: ${booking.passengers}
+🚗 Car: ${booking.car}
+📝 Special: ${booking.special || 'Koi nahi'}
 ━━━━━━━━━━━━━━━━━━
 🕐 Booking Time: ${booking.bookedAt}`;
   const encoded = encodeURIComponent(msg);
